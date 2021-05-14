@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        function myClick(idStr, fun) {
+            let btn = document.getElementById(idStr);
+            btn.onclick = fun;
+
+        }
+
+        window.onload = function () {
+
+            // let btn01 = document.getElementById('btn01');
+            // btn01.onclick = function () {
+            //     let bj = document.getElementById('bj');
+            //     alert(bj.innerHTML);
+            // }
+            myClick('btn01', function () {
+                var bj = document.getElementById('bj');
+                alert(bj.innerHTML);
+            })
+            let btn02 = document.getElementById('btn02');
+            btn02.onclick = function () {
+                let lis = document.getElementsByTagName('li');
+                for (i = 0; i < lis.length; i++) {
+                    alert(lis[i].innerHTML);
+                }
+            }
+
+            myClick('btn03', function () {
+                let bj = document.getElementById('bj');
+                let bjParent = bj.parentNode;
+                alert(bjParent.innerText);
+            })
+
+            let btn04 = document.getElementById('btn04');
+            btn04.onclick = function () {
+                let city = document.getElementById('city');
+                let cityLis = city.getElementsByTagName('li');
+                for (i = 0; i < cityLis.length; i++) {
+                    alert(cityLis[i].innerHTML);
+                }
+            };
+            let btn05 = document.getElementById('btn05');
+            btn05.onclick = function () {
+                let city = document.getElementById('city');
+                let cityChild = city.children;
+                for (i = 0; i < cityChild.length; i++) {
+                    alert(cityChild[i].innerHTML);
+                };
+            }
+            let btn06 = document.getElementById('btn06');
+            btn06.onclick = function () {
+                let city = document.getElementById('city');
+                let cfc = city.firstElementChild;
+                alert(cfc.innerHTML);
+            }
+           
+        };
+
+
+    </script>
+</head>
+
+<body>
+    <div id="total">
+        <div id="inner">
+            <p>
+                your city:
+            </p>
+            <ul id="city">
+                <li id="bj">Beijing</li>
+                <li>Shanghai</li>
+                <li>Tokyo</li>
+                <li>Sydney</li>
+            </ul>
+        </div>
+    </div>
+    <div id="btnList">
+        <div><button id="btn01">find #bj node</button></div>
+        <div><button id="btn02">find all li node</button></div>
+        <div><button id="btn03">find parent node of #bj</button></div>
+        <div><button id="btn04">find li node under #city</button></div>
+        <div><button id="btn05">find child node under #city</button></div>
+        <div><button id="btn06">return first child node of #city</button></div>
+        
+        
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #box1 {
+        width: 100px;
+        height: 100px;
+        background-color: #bfa;
+        position: absolute;
+        left: 100px;
+        top: 100px;
+    }
+</style>
+<script>
+    //move div
+    window.onload = function () {
+        let speed = 10;
+        //change dir to control div
+
+        let dir = 0;
+        setInterval(() => {
+            if (dir == 'a') {
+                box1.style.left = box1.offsetLeft - speed + 'px';
+            } else if (dir == 'w') {
+                box1.style.top = box1.offsetTop - speed + 'px';
+            } else if (dir == 's') {
+                box1.style.top = box1.offsetTop + speed + 'px';
+            } else if (dir == 'd') {
+                box1.style.left = box1.offsetLeft + speed + 'px';
+            }
+        }, 30);
+        let box1 = document.getElementById('box1');
+        document.onkeydown = (event) => {
+            dir = event.key;
+        };
+        document.onkeyup =()=>{
+            dir = 0;
+        };
+    };
+
+</script>
+
+<body>
+    <div id="box1"></div>
+
+</body>
+
+</html>

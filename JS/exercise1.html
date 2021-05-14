@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        
+        window.onload = function () {
+            /*
+             *click delete to delete an employee's information   
+            */
+            // get all <a>
+            let allA = document.getElementsByTagName('a');
+            for (let i = 0; i < allA.length; i++) {
+                allA[i].onclick = function () {
+                    let tr = this.parentNode.parentNode;
+                    var td = tr.children[0].innerHTML;
+                    let infor = confirm('Delete' + td);
+                    if (infor) {
+                        tr.parentNode.removeChild(tr);
+                    }
+
+                    return false;
+                }
+            }
+
+            let butt = document.getElementById('addEmpButton');
+            butt.onclick = function () {
+                let empName = document.getElementById('empName').value;
+                let email = document.getElementById('email').value;
+                let salary = document.getElementById('salary').value;
+
+                let nameTd = document.createElement('td');
+                let emailTd = document.createElement('td');
+                let salaryTd = document.createElement('td');
+                let aTd = document.createElement('td')
+
+                let nameText = document.createTextNode(empName);
+                let emailText = document.createTextNode(email);
+                let salaryText = document.createTextNode(salary);
+
+                nameTd.appendChild(nameText);
+                emailTd.appendChild(emailText);
+                salaryTd.appendChild(salaryText);
+
+                let tr = document.createElement('tr');
+
+                let aLink = document.createElement('a');
+                aLink.href = 'deleteEmp?id=001';
+                let aText = document.createTextNode('Delete');
+                aLink.appendChild(aText);
+                aTd.appendChild(aLink);
+
+                tr.appendChild(nameTd);
+                tr.appendChild(emailTd);
+                tr.appendChild(salaryTd);
+                tr.appendChild(aTd);
+
+                let table = document.getElementById('employeeTable');
+
+                table.appendChild(tr);
+
+                let allA = document.getElementsByTagName('a');
+                for (let i = 0; i < allA.length; i++) {
+                    allA[i].onclick = function () {
+                        let tr = this.parentNode.parentNode;
+                        var td = tr.children[0].innerHTML;
+                        let infor = confirm('Delete' + td);
+                        if (infor) {
+                            tr.parentNode.removeChild(tr);
+                        }
+
+                        return false;
+                    }
+                }
+
+
+
+            }
+
+        };
+    </script>
+</head>
+
+<body>
+    <table id="employeeTable" border="2px">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Salary</th>
+            <th>&nbsp;</th>
+        </tr>
+        <tr>
+            <td>Tom</td>
+            <td>tom@tom.com</td>
+            <td>5000</td>
+            <td><a href="deleteEmp?id=001">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Jerry</td>
+            <td>jerry@gmail.com</td>
+            <td>8000</td>
+            <td><a href="deleteEmp?id=002">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Bob</td>
+            <td>Bob@gmail.com</td>
+            <td>10000</td>
+            <td><a href="deleteEmp?id=003">Delete</a></td>
+        </tr>
+    </table>
+    <div class="formDiv">
+        <h4>Add new employee</h4>
+
+        <table border="2px">
+            <tr>
+                <td class="word">Name:</td>
+                <td class="inp">
+                    <input type="text" name="empName" id="empName" />
+                </td>
+            </tr>
+            <tr>
+                <td class="word">Email:</td>
+                <td class="inp">
+                    <input type="text" name="email" id="email" />
+                </td>
+            </tr>
+            <tr>
+                <td class="word">salary:</td>
+                <td class="inp">
+                    <input type="text" name="salary" id="salary" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <button id="addEmpButton" value="abc">submit</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+
+</html>

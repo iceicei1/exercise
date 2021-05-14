@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function myClick(idStr, fun){
+            let btn = document.getElementById(idStr);
+            btn.onclick=fun;
+        }
+        window.onload = function () {
+            myClick('btn01',function(){
+                let li = document.createElement('li');
+                let gzText = document.createTextNode('Guangzhou');
+                li.appendChild(gzText);
+                let city = document.getElementById('city');
+                city.appendChild(li);
+              
+            });
+
+            myClick('btn02',function(){
+                let li = document.createElement('li');
+                let gzText = document.createTextNode('Guangzhou');
+                li.appendChild(gzText);
+
+                var bj = document.getElementById('bj');
+                
+                let city = document.getElementById('city');
+                city.insertBefore(li,bj);
+            });
+
+            myClick('btn03',function(){
+                let li = document.createElement('li');
+                let gzText = document.createTextNode('Guangzhou');
+                li.appendChild(gzText);
+
+                var bj = document.getElementById('bj');
+                let city = document.getElementById('city');
+                city.replaceChild(li,bj);
+            });
+
+            myClick('btn04',function(){
+                let bj = document.getElementById('bj');
+                // let city = document.getElementById('city');
+                // city.removeChild(bj);
+                bj.parentNode.removeChild(bj);
+            })
+
+            myClick('btn05',function(){
+                let city = document.getElementById('city');
+                alert(city.innerHTML);
+            })
+
+            myClick('btn06', function(){
+                let bj = document.getElementById('bj');
+                bj.innerHTML = 'Rhodes';
+            })
+        };
+
+
+
+    </script>
+</head>
+
+<body>
+    <div id="total">
+        <div id="inner">
+            <p>
+                your city:
+            </p>
+            <ul id="city">
+                <li id="bj">Beijing</li>
+                <li>Shanghai</li>
+                <li>Tokyo</li>
+                <li>Sydney</li>
+            </ul>
+        </div>
+    </div>
+    <div id="btnList">
+        <div><button id="btn01">creat a 'Guangzhou' node, add it to #city</button></div>
+        <div><button id="btn02">Insert 'Guangzhou' node infront of #bj</button></div>
+        <div><button id="btn03">Replace #bj node by 'Guangzhou' node</button></div>
+        <div><button id="btn04">Delete #bj node</button></div>
+        <div><button id="btn05">Read #city innerHTML</button></div>
+        <div><button id="btn06">Set #bj innerHTML</button></div>
+    </div>
+</body>
+
+</html>
